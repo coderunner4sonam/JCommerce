@@ -1,22 +1,44 @@
 import React from "react";
 import ProductCard from "../component/ProductCard";
+import earings from "../assets/earings.jpeg";
+import earingone from "../assets/earingone.jpeg";
+import earingtwo from "../assets/earingtwo.jpeg";
 
-const Product = [
-    {
-        
-    },
+export interface ProductType {
+  ProductImage: string;
+  ProductTitle: string;
+  ProductDescription: string;
+  ProductPrice: number;
+}
 
+const Product: ProductType[] = [
+  {
+    ProductImage: earings,
+    // ProductImageone: earingone, 
+    ProductTitle: "STUD EARRINGS",
+    ProductDescription: "Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
+    ProductPrice: 7000,
+  },
+  {
+    ProductImage: earings,
+    ProductTitle: "STUD EARRINGS",
+    ProductDescription: "Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
+    ProductPrice: 7000,
+  },
 ];
-
-function MainBody() {
+  
+const MainBody: React.FC<{}> = () => {
   return (
     <div style={MainBody_Parent}>
-      {[...Array(30)].map((ele, ind) => (
-        <ProductCard />
+      {Product.map((ele, ind) => (
+        <ProductCard
+          key={ind} // Don't forget to add a unique key for each mapped element
+          productdata={ele}
+        />
       ))}
     </div>
   );
-}
+};
 
 const MainBody_Parent: React.CSSProperties = {
   display: "flex",
@@ -25,3 +47,6 @@ const MainBody_Parent: React.CSSProperties = {
 };
 
 export default MainBody;
+
+
+
